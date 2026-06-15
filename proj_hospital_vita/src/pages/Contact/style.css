@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PAGE STYLE: Contact (Adaptado para Modo Claro e Escuro)
+   ========================================================================== */
+
 .contact-container {
   display: flex;
   flex-direction: column;
@@ -7,8 +11,16 @@
   margin: 0 auto 4rem auto;
 }
 
-.contact-form-box, .contact-info-box { flex: 1; }
-.contact-form-box h2, .contact-info-box h2 { font-size: 1.75rem; color: #0f172a; margin-bottom: 1.5rem; }
+.contact-form-box, .contact-info-box { 
+  flex: 1; 
+}
+
+.contact-form-box h2, .contact-info-box h2 { 
+  font-size: 1.75rem; 
+  color: var(--texto-principal); /* Cor adaptativa para os títulos */
+  margin-bottom: 1.5rem; 
+  transition: color 0.3s ease;
+}
 
 .form-group {
   display: flex;
@@ -19,27 +31,40 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #334155;
+  color: var(--texto-principal); /* Label acompanha o tema */
   margin-bottom: 0.5rem;
+  opacity: 0.9;
+  transition: color 0.3s ease;
 }
 
 .form-group input, .form-group textarea {
+  /* No Modo Claro usa fundo branco e borda cinza, no Escuro usa variáveis adaptativas */
+  background-color: var(--bg-principal);
   border: 1px solid #cbd5e1;
+  color: var(--texto-principal);
   padding: 0.75rem;
   border-radius: 6px;
   font-family: inherit;
   font-size: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ajuste específico de borda para os inputs no Modo Escuro */
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  border-color: #475569;
+  background-color: var(--bg-card); /* Fundo um pouquinho mais claro que o body */
 }
 
 .form-group input:focus, .form-group textarea:focus {
   outline: none;
   border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
 }
 
 .btn-submit {
   background-color: #0284c7;
-  color: #ffffff;
+  color: #ffffff !important; /* Garante que o texto continue branco */
   border: none;
   padding: 1rem;
   font-size: 1rem;
@@ -47,16 +72,54 @@
   border-radius: 6px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
-.btn-submit:hover { background-color: #0369a1; }
+.btn-submit:hover { 
+  background-color: #0369a1; 
+}
 
-.info-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
-.info-icon { font-size: 1.5rem; background: #f0f7ff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-.info-item strong { color: #0f172a; font-size: 1rem; display: block; margin-bottom: 0.25rem; }
-.info-item p { color: #475569; margin: 0; font-size: 0.95rem; line-height: 1.5; }
+.info-item { 
+  display: flex; 
+  gap: 1rem; 
+  margin-bottom: 2rem; 
+}
+
+.info-icon { 
+  font-size: 1.5rem; 
+  background: #f0f7ff; /* Azul clarinho padrão */
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 50%; 
+  transition: background-color 0.3s ease;
+}
+
+/* Suaviza o fundo do círculo do ícone no Modo Escuro */
+body.dark-mode .info-icon {
+  background: #1e293b; 
+}
+
+.info-item strong { 
+  color: var(--texto-principal); 
+  font-size: 1rem; 
+  display: block; 
+  margin-bottom: 0.25rem; 
+  transition: color 0.3s ease;
+}
+
+.info-item p { 
+  color: var(--texto-secundario); 
+  margin: 0; 
+  font-size: 0.95rem; 
+  line-height: 1.5; 
+  transition: color 0.3s ease;
+}
 
 @media (min-width: 768px) {
-  .contact-container { flex-direction: row; }
+  .contact-container { 
+    flex-direction: row; 
+  }
 }

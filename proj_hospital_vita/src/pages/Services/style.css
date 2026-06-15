@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PAGE STYLE: Especialidades / Services (Adaptado para Modo Claro e Escuro)
+   ========================================================================== */
+
 .services-grid-container {
   padding: 4rem 1.5rem;
   max-width: 1100px;
@@ -11,11 +15,16 @@
 }
 
 .service-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  /* Substitui o branco fixo pela nossa cor de card inteligente */
+  background: var(--bg-card);
+  border: 1px solid var(--texto-secundario);
   border-radius: 12px;
   padding: 2rem;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .service-card {
+  border-color: #2d3748;
 }
 
 .service-card:hover {
@@ -24,9 +33,14 @@
   box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.05);
 }
 
+body.dark-mode .service-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
 .service-icon-box {
   font-size: 2rem;
-  background-color: #f0f7ff;
+  background-color: #f0f7ff; /* Fundo azul suave padrão */
   width: 50px;
   height: 50px;
   display: flex;
@@ -34,29 +48,84 @@
   justify-content: center;
   border-radius: 8px;
   margin-bottom: 1.25rem;
+  transition: background-color 0.3s ease;
 }
 
-.service-card h3 { font-size: 1.25rem; color: #0f172a; margin-bottom: 0.5rem; }
-.service-card p { color: #475569; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; }
+/* Suaviza o quadradinho do ícone no Modo Escuro */
+body.dark-mode .service-icon-box {
+  background-color: #1e293b;
+}
+
+.service-card h3 { 
+  font-size: 1.25rem; 
+  color: var(--texto-principal); /* Adaptativo */
+  margin-bottom: 0.5rem; 
+  transition: color 0.3s ease;
+}
+
+.service-card p { 
+  color: var(--texto-secundario); /* Adaptativo */
+  font-size: 0.95rem; 
+  line-height: 1.5; 
+  margin-bottom: 1.5rem; 
+  transition: color 0.3s ease;
+}
 
 .service-link {
   text-decoration: none;
   color: #0284c7;
   font-weight: 600;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
+body.dark-mode .service-link {
+  color: #38bdf8;
+}
+
+/* --- BANNER INFERIOR DE EXAMES --- */
 .exams-banner {
-  background-color: #f0fdf4;
+  background-color: #f0fdf4; /* Verde suave no modo claro */
   border-top: 1px solid #bbf7d0;
   padding: 5rem 1.5rem;
   text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.exams-content { max-width: 700px; margin: 0 auto; }
-.exams-content h2 { font-size: 1.75rem; color: #065f46; margin-bottom: 1rem; }
-.exams-content p { color: #1e293b; margin-bottom: 2rem; line-height: 1.6; }
+/* Transiciona para verde escuro hospitalar no escuro */
+body.dark-mode .exams-banner {
+  background-color: #064e3b;
+  border-top-color: #047857;
+}
 
+.exams-content { 
+  max-width: 700px; 
+  margin: 0 auto; 
+}
+
+.exams-content h2 { 
+  font-size: 1.75rem; 
+  color: #065f46; 
+  margin-bottom: 1rem; 
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .exams-content h2 {
+  color: #34d399; /* Verde menta de alto contraste */
+}
+
+.exams-content p { 
+  color: #1e293b; 
+  margin-bottom: 2rem; 
+  line-height: 1.6; 
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .exams-content p {
+  color: #e6f4ea;
+}
+
+/* --- Responsividade --- */
 @media (min-width: 768px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
 }

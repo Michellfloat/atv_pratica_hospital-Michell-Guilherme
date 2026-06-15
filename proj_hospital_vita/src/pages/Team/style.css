@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PAGE STYLE: Corpo Clínico / Team (Adaptado para Modo Claro e Escuro)
+   ========================================================================== */
+
 .team-grid-container {
   padding: 4rem 1.5rem;
   max-width: 1000px;
@@ -11,19 +15,27 @@
 }
 
 .doctor-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  /* Altera dinamicamente entre branco (light) e grafite (dark) */
+  background: var(--bg-card);
+  border: 1px solid var(--texto-secundario);
   border-radius: 16px;
   padding: 2rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ajuste sutil de borda e sombra no Modo Escuro */
+body.dark-mode .doctor-card {
+  border-color: #2d3748;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .doctor-avatar-box {
   font-size: 3rem;
-  background-color: #f1f5f9;
+  background-color: #f1f5f9; /* Fundo cinza claro no modo claro */
   width: 80px;
   height: 80px;
   display: flex;
@@ -31,13 +43,46 @@
   justify-content: center;
   border-radius: 50%;
   border: 2px solid #e2e8f0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.doctor-info { display: flex; flex-direction: column; }
-.doctor-info h3 { font-size: 1.3rem; color: #0f172a; margin: 0 0 0.25rem 0; }
-.doctor-role { color: #0284c7; font-weight: 600; font-size: 1rem; margin-bottom: 0.25rem; }
-.doctor-crm { color: #94a3b8; font-size: 0.8rem; }
+/* Escurece a caixinha do avatar à noite para não estourar no olho */
+body.dark-mode .doctor-avatar-box {
+  background-color: #1e293b;
+  border-color: #334155;
+}
 
+.doctor-info { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.doctor-info h3 { 
+  font-size: 1.3rem; 
+  color: var(--texto-principal); /* Nome do médico adaptativo */
+  margin: 0 0 0.25rem 0; 
+  transition: color 0.3s ease;
+}
+
+.doctor-role { 
+  color: #0284c7; /* Mantém o azul padrão médico */
+  font-weight: 600; 
+  font-size: 1rem; 
+  margin-bottom: 0.25rem; 
+}
+
+/* Tom de azul levemente mais radiante para a especialidade no modo escuro */
+body.dark-mode .doctor-role {
+  color: #38bdf8;
+}
+
+.doctor-crm { 
+  color: var(--texto-secundario); /* CRM acompanha o tema */
+  font-size: 0.8rem; 
+  transition: color 0.3s ease;
+}
+
+/* --- Responsividade --- */
 @media (min-width: 768px) {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
 }

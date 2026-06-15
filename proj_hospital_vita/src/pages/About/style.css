@@ -1,13 +1,36 @@
-.about-page { width: 100%; }
+/* ==========================================================================
+   PAGE STYLE: About (Adaptado para Modo Claro e Escuro)
+   ========================================================================== */
+
+.about-page { 
+  width: 100%; 
+}
 
 .page-intro {
   text-align: center;
   padding: 4rem 1.5rem;
-  background-color: #f8fafc;
+  /* Alterna entre o cinza bem claro institucional e o fundo de cards escuro */
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--texto-secundario);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.page-intro h1 { font-size: 2.5rem; color: #0f172a; margin-bottom: 0.5rem; }
-.page-intro p { color: #64748b; font-size: 1.1rem; }
+body.dark-mode .page-intro {
+  border-bottom-color: #2d3748;
+}
+
+.page-intro h1 { 
+  font-size: 2.5rem; 
+  color: var(--texto-principal); /* Adaptativo */
+  margin-bottom: 0.5rem; 
+  transition: color 0.3s ease;
+}
+
+.page-intro p { 
+  color: var(--texto-secundario); /* Adaptativo */
+  font-size: 1.1rem; 
+  transition: color 0.3s ease;
+}
 
 .history-section {
   display: flex;
@@ -18,12 +41,25 @@
   margin: 0 auto;
 }
 
-.history-text h2 { font-size: 2rem; color: #0f172a; margin-bottom: 1.5rem; }
-.history-text p { color: #475569; line-height: 1.7; margin-bottom: 1rem; font-size: 1.05rem; }
+.history-text h2 { 
+  font-size: 2rem; 
+  color: var(--texto-principal); /* Adaptativo */
+  margin-bottom: 1.5rem; 
+  transition: color 0.3s ease;
+}
+
+.history-text p { 
+  color: var(--texto-secundario); /* Adaptativo */
+  line-height: 1.7; 
+  margin-bottom: 1rem; 
+  font-size: 1.05rem; 
+  transition: color 0.3s ease;
+}
 
 .history-image-placeholder {
   flex: 1;
   min-height: 300px;
+  /* Mantém o gradiente institucional bonito em ambos os modos */
   background: linear-gradient(135deg, #0284c7 0%, #1e3a8a 100%);
   border-radius: 16px;
   position: relative;
@@ -33,11 +69,13 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-principal); /* Vira preto/grafite no escuro para manter o contraste */
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--texto-principal); /* Inverte o texto junto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .mvv-section {
@@ -50,18 +88,40 @@
 }
 
 .mvv-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  /* Usa variação dinâmica para destacar os blocos do fundo da página */
+  background: var(--bg-card);
+  border: 1px solid var(--texto-secundario);
   padding: 2.5rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mvv-icon { font-size: 3rem; margin-bottom: 1rem; }
-.mvv-card h3 { font-size: 1.4rem; color: #0f172a; margin-bottom: 0.75rem; }
-.mvv-card p { color: #475569; line-height: 1.6; }
+body.dark-mode .mvv-card {
+  border-color: #2d3748;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
 
+.mvv-icon { 
+  font-size: 3rem; 
+  margin-bottom: 1rem; 
+}
+
+.mvv-card h3 { 
+  font-size: 1.4rem; 
+  color: var(--texto-principal); 
+  margin-bottom: 0.75rem; 
+  transition: color 0.3s ease;
+}
+
+.mvv-card p { 
+  color: var(--texto-secundario); 
+  line-height: 1.6; 
+  transition: color 0.3s ease;
+}
+
+/* --- Responsividade --- */
 @media (min-width: 768px) {
   .history-section { flex-direction: row; align-items: center; }
   .history-text, .history-image-placeholder { flex: 1; }

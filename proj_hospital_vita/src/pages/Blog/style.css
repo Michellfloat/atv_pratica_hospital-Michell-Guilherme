@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PAGE STYLE: Blog Grid (Adaptado para Modo Claro e Escuro)
+   ========================================================================== */
+
 .blog-grid-container {
   padding: 4rem 1.5rem;
   max-width: 1100px;
@@ -11,18 +15,33 @@
 }
 
 .blog-post-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  /* Altera dinamicamente entre branco (light) e grafite (dark) */
+  background: var(--bg-card);
+  border: 1px solid var(--texto-secundario);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ajuste de borda e sombra para o Modo Escuro */
+body.dark-mode .blog-post-card {
+  border-color: #2d3748;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .post-thumbnail-placeholder {
   height: 200px;
   background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
   position: relative;
+  transition: background 0.3s ease;
+}
+
+/* Deixa o placeholder cinza um pouco mais escuro e sutil à noite */
+body.dark-mode .post-thumbnail-placeholder {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
 }
 
 .category-tag {
@@ -30,7 +49,7 @@
   top: 15px;
   left: 15px;
   background-color: #0284c7;
-  color: #ffffff;
+  color: #ffffff !important; /* Garante visibilidade do texto da tag */
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.35rem 0.75rem;
@@ -42,24 +61,27 @@
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   display: flex;
   gap: 0.5rem;
-  color: #64748b;
+  color: var(--texto-secundario); /* Cor adaptativa para data e tempo de leitura */
   font-size: 0.85rem;
+  transition: color 0.3s ease;
 }
 
 .blog-post-card h3 {
   padding: 0 1.5rem;
   font-size: 1.3rem;
-  color: #0f172a;
+  color: var(--texto-principal); /* Título do artigo adaptativo */
   margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
 }
 
 .blog-post-card p {
   padding: 0 1.5rem;
-  color: #475569;
+  color: var(--texto-secundario); /* Texto descritivo adaptativo */
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
   flex-grow: 1;
+  transition: color 0.3s ease;
 }
 
 .btn-read-more {
@@ -72,9 +94,22 @@
   padding: 0 1.5rem 1.5rem 1.5rem;
   cursor: pointer;
   width: fit-content;
+  transition: color 0.2s ease;
 }
 
-.btn-read-more:hover { color: #0369a1; text-decoration: underline; }
+/* Tom de azul levemente mais claro para o link no modo escuro */
+body.dark-mode .btn-read-more {
+  color: #38bdf8;
+}
+
+.btn-read-more:hover { 
+  color: #0369a1; 
+  text-decoration: underline; 
+}
+
+body.dark-mode .btn-read-more:hover {
+  color: #7dd3fc;
+}
 
 @media (min-width: 768px) {
   .blog-grid { grid-template-columns: repeat(3, 1fr); }
