@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import './style.css'; // Criaremos este arquivo na estilização das páginas
+import DarkModeToggle from '../DarkModeToggle'; // Importando o seu botão!
+import './style.css'; 
 
 export default function Header() {
   return (
@@ -34,8 +35,9 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        {/* CTA (Call To Action) - Essencial para conversão em sites médicos */}
-        <div className="navbar-cta">
+        {/* CTA e Modo Escuro */}
+        <div className="navbar-cta" style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <DarkModeToggle /> {/* Seu componente inserido com sucesso aqui! */}
           <Link to="/contact" className="btn-schedule">
             Agendar Consulta
           </Link>

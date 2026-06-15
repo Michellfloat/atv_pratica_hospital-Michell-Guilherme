@@ -1,13 +1,28 @@
-/* ==========================================================================
-   COMPONENT STYLE: Footer
-   ========================================================================== */
-
 .footer-wrapper {
-  background-color: #0f172a; /* Slate Escuro para contraste e sobriedade institucional */
-  color: #94a3b8;
+  /* --- CORES PADRÃO: Modo Claro --- */
+  --footer-bg: #f8fafc; 
+  --footer-text: #475569;
+  --footer-title: #0f172a;
+  --footer-border: #e2e8f0;
+  --footer-hover: #0284c7;
+
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   padding: 4rem 1.5rem 1.5rem 1.5rem;
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid var(--footer-border);
   margin-top: auto; /* Garante que o footer fique embaixo se a página tiver pouco conteúdo */
+  
+  /* Transição suave ao alternar os modos */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- ALTERAÇÃO DE CORES: Modo Escuro (Mantém o design original do seu colega) --- */
+body.dark-mode .footer-wrapper {
+  --footer-bg: #0f172a; /* Slate Escuro original */
+  --footer-text: #94a3b8;
+  --footer-title: #ffffff;
+  --footer-border: #1e293b;
+  --footer-hover: #38bdf8;
 }
 
 .footer-container {
@@ -20,17 +35,19 @@
 }
 
 .footer-column h3 {
-  color: #ffffff;
+  color: var(--footer-title);
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
+  transition: color 0.3s ease;
 }
 
 .footer-column h4 {
-  color: #f8fafc;
+  color: var(--footer-title);
   font-size: 1.1rem;
   margin-bottom: 1.25rem;
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .footer-column p {
@@ -55,14 +72,14 @@
 }
 
 .footer-column ul li a {
-  color: #94a3b8;
+  color: var(--footer-text);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .footer-column ul li a:hover {
-  color: #38bdf8; /* Destaque em azul claro no hover */
+  color: var(--footer-hover); /* Destaque dinâmico no hover */
 }
 
 /* Faixa de Copyright Inferior */
@@ -70,9 +87,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 1.5rem;
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid var(--footer-border);
   text-align: center;
   font-size: 0.85rem;
+  transition: border-color 0.3s ease;
 }
 
 .footer-bottom p {
